@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <link style="text/css" rel="stylesheet" href="styles.css" />
+    <title></title>
+</head>
+<body>
+    <header class="navBar">
+        <div class="siteNavLogo"><a href="https://medium.com/">M</a></div>
+        <div id="reactTutorialsImg">
+            <a href="https://medium.com/react-tutorials?source=logoAvatar-lo_4f87a8a677c4-e9aa8fc6017e"><img src="https://cdn-images-1.medium.com/fit/c/32/32/1*bs9PbxDndAW7mmqve3EQ-w.jpeg" /></a>
+        </div>
+        <div id="reactTutorials"><a href=""><img src="" /></a>
+        </div>
+        <div id="search"></div>
+        <div id="signInUp"></div>
+    </header>
+    <div class="topper">
+        <img src="" />
+        <a href=""></a>
+    </div>
+    <div class="textBox">
+    <div class="text">
+        <h2>React Components</h2>
+        <p>Components are the smallest, yet most fundamental part of React. They’re similar, in concepts, to things like widgets and modules. React defines itself as a library for building user interfaces. As such, when you think of a user interface you want to build (with React), you need to think of it in terms of the smallest possible components that you can define.</p>
+        <p>These components include code which defines how DOM elements are created and how users can interact with them. Components can be defined purely in JavaScript or they can be defined in a superset (or extended variation) of JavaScript called JSX. If you decide to use JSX for your component definitions, you may also need a compiler application, but we’ll get to that in a minute.</p>
+        <div  class="lineLeft">
+        <p>We’re going to be referring to pure JavaScript as JS and the React version of JavaScript as JSX.</p>
+            <p>You can find the accompanying source-code, for this tutorial, at: https://github.com/formativ/tutorial-react-components.</p>
+            <p>Please post any errors you find, or questions you have as comments on this article or as issues on GitHub.</p>
+            <p>Thanks to Pete Hunt for helping to improve this!</p>
+        </div>
+            <h3>Embedded HTML</h3>
+            <p>If you’ve been developing websites for a while, you may have flinched when I spoke about using HTML within your JavaScript. For the longest time, a development paradigm has existed which says that you should split HTML and JavaScript. Words like unobtrusive have been repurposed to express this kind of separation. That is exactly how I felt, until I started working with React.</p>
+            <p>The reason this paradigm exists is to decrease coupling (how much things depend on each other) and increase cohesion (how well different things work together). So we have created an environment in which we try our best to make HTML (and templates) as free of logic as possible. We then need to attach behaviour to this in the form of external scripts.</p>
+            <p>There are trade-offs with this approach to doing things. For starters, it takes more effort trying to keep these two things separate. There are many template engines and languages. There are also many template parsers to handle them all. And yet these languages (with the exception of HTML) still seem to include a modicum of logical operations…</p>
+            <p>Additionally, when we need to modify the contents of a web page, via JavaScript, we have to know about HTML and/or templates. How else can we know what to display and where to display it? We could load external templates, via additional HTTP requests, but how would we know where to put it without some knowledge of the DOM? We could load templates embedded within special script tags, but we would first need to fetch the contents of those script tags.</p>
+            <p>Additionally, when we need to modify the contents of a web page, via JavaScript, we have to know about HTML and/or templates. How else can we know what to display and where to display it? We could load external templates, via additional HTTP requests, but how would we know where to put it without some knowledge of the DOM? We could load templates embedded within special script tags, but we would first need to fetch the contents of those script tags.</p>    
+            <p class="lineLeft">These points from from a presentation I found at: http://www.slideshare.net/floydophone/react-preso-v2.</p>
+            <h3>Components</h3>
+            <p>Hopefully you’re willing to try this whole embedded HTML thing. In case not, I will create JS examples along with the JSX examples in this tutorial Let’s look at a simple component, just to get a feel for how one defines them:</p>
+            <div class="box">/**
+ * @jsx React.DOM
+ */
+  
+var HelloWorld = React.createClass({
+  render : function() {
+    return <div>hello world!</div>;
+  }
+});
+
+React.renderComponent(
+  <HelloWorld />,
+  document.body
+); </div>
+            <p>The same code, in pure JavaScript looks much the same:</p>
+            <div class="box">var HelloWorld = React.createClass({
+  render : function() {
+    return React.DOM.div({
+      children : "hello world!"
+    });
+  }
+});
+
+React.renderComponent(
+  HelloWorld({}),
+  document.body
+);</div>
+            <p>This is possible because JSX isn’t run directly in the browser. It may look that way in some examples, but there’s a script which converts JSX syntax into JS. For this to work, all the special JSX syntax needs to have a JS implementation. When you’re developing in JSX, you’re really just developing in an extended version of JavaScript.</p>
+            <p>You may also notice that the comment we began with, which had @jsx React.DOM in it, wasn’t required in the JS implementation. This is because the parser needs to see that in order for it to convert the JSX syntax to JS. Whether you are loading JSX from script elements within the same document, or loading external JSX scripts, you should always include this comment at the top of the script file.</p>
+            <p class="lineLeft">The @jsx directive will allow you to run the parser tool on all your JS and JSX scripts, affecting only the JSX scripts.</p>
+            <p>Ignoring the React.DOM.div stuff, there’s not a lot to defining a component. Components will most often generate HTML for an interface. This is why we defined a render() method (on the JSON object we passed to the React.createClass() method).</p>
+            <p class="lineLeft">Don’t be confused by the empty JSON object we pass to the HelloWorld() method. This gets handled in a different way, which we’ll see in later tutorials.</p>
+            <p>When we return, from within a render() method, we’re showing React what we want to component’s generated HTML to look like. There are a few different kinds of data that can be returned from within a render() method, but you will most often see DOM elements (or components) being returned.</p>
+            <p class="lineLeft">You can find more examples of this in the React download, at: http://facebook.github.io/react/downloads.html.</p>
+        
+    </div>
+    </div>
+    <footer></footer>
+</body>
+</html>

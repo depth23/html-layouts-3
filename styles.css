@@ -1,0 +1,36 @@
+html body{
+    height: 100%;
+    width: 100%;
+}
+.navbar {
+    
+}
+.topper {
+}
+
+.textBox {
+    height: 100%;
+    width: 65%;
+    margin: auto;
+    outline: 2px dashed yellow;
+}
+
+h2 {
+    font-size: 66px;
+}
+
+.text {
+    width: 100%;
+    text-align: justify;
+    font-size: 22px;
+}
+.lineLeft {
+    border-left: 2px solid black;
+    padding-left: 21px;
+    margin-left: -24px;
+}
+.box {
+    height: 300px;
+    width: 100%;
+    background: rgb(243, 243, 243);
+}
